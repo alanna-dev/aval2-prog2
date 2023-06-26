@@ -2,8 +2,8 @@
 // ESTE ARQUIVO NÃO DEVE SER ALTERADO
 //
 
-import '../lib/digital_library.dart';
-import '../lib/media.dart';
+import 'package:diglib/digital_library.dart';
+import 'package:diglib/media.dart';
 
 void main() {
   const mediaFileName = 'data/media.json';
