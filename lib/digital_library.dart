@@ -3,29 +3,32 @@ import 'dart:convert';
 import 'dart:io';
 
 class DigitalLibrary {
-  List<Type> medias = [];
+  List<Media> medias = [];
   int tmd = 0;
-  var mapFile = new Map();
-  addMedia(Media) {
-    medias.add(Media.type);
+  Map<String, dynamic> mapFile = {};
+
+  addMedia(Media media) {
+    medias.add(media);
   }
 
   loadMedia(String value) {
-    var fileContent = {File(value).readAsStringSync()};
-    mapFile = {fileContent} as Map;
+    var fileContent = File(value).readAsStringSync();
+    mapFile = jsonDecode(fileContent);
   }
 
-  listMedia(MediaType type) {
-    var parsedJson = jsonDecode(File('./media.json').readAsStringSync()) as List<dynamic>;
-    List<Map<String, dynamic>> medias = List<Map<String, dynamic>>.from(parsedJson);
-    print(medias);
+  listMedia(MediaType) {
+    var parsedJson =
+        jsonDecode(File('./media.json').readAsStringSync()) as List<dynamic>;
+    List<Map<String, dynamic>> medias =
+        List<Map<String, dynamic>>.from(parsedJson);
   }
 
-  totalMediaDuration(Type type) {
-
-    for (int c in mapFile['duration']) {
-      int c2 = tmd;
-      tmd = c + c2;
+  totalMediaDuration(MediaType type) {
+    int totalDuration = 0;
+    for (var media in medias) {
+      if (media.type == type) {
+        totalDuration += media.duration;
+      }
     }
   }
 }
