@@ -19,10 +19,6 @@ class DigitalLibrary {
     List<Map<String, dynamic>> medias = [];
     var parsedJson = jsonDecode('./media.json') as List<dynamic>;
     print('${parsedJson.runtimeType} : $parsedJson');
-    medias = parsedJson.map(dynamic mediaItem) {
-      final mapItem = mediaItem
-    }
-    return (Map<type, title, name, duration>
   }
 
   totalMediaDuration(Type type) {
