@@ -16,9 +16,9 @@ class DigitalLibrary {
   }
 
   listMedia(MediaType type) {
-    List<Map<String, dynamic>> medias = [];
-    var parsedJson = jsonDecode('./media.json') as List<dynamic>;
-    print('${parsedJson.runtimeType} : $parsedJson');
+    var parsedJson = jsonDecode(File('./media.json').readAsStringSync()) as List<dynamic>;
+    List<Map<String, dynamic>> medias = List<Map<String, dynamic>>.from(parsedJson);
+    print(medias);
   }
 
   totalMediaDuration(Type type) {
